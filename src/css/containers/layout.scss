@@ -36,7 +36,7 @@ section.layout {
       background-size: $header-height $header-height, calc(100% - (#{$header-height + 40px})) auto;
 
       @media screen and (max-width: 360px) {
-        background: url('../../images/logo.png') no-repeat $header-padding $header-padding;
+        background: url('../../images/logo.png') no-repeat $header-padding (calc(50% - (#{($top-gradient-height + $bottom-gradient-height) / 2})));
         background-size: calc(100% - (#{$header-padding * 2})) auto;
       }
     }
