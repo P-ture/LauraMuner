@@ -1,22 +1,22 @@
-import { readdirSync } from 'fs';
-
-/**
- * @constant directories
- * @type {Array}
- */
-export const directories = () => {
-    const isServer = typeof readdirSync === 'function';
-    return isServer ? readdirSync(`${__dirname}/../images/gallery`) : JSON.parse(document.currentScript.getAttribute('data-store'));
-};
+import { INIT } from './types';
 
 /**
  * @constant INITIAL_STATE
  * @type {Object}
  */
 const INITIAL_STATE = {
-    directories: directories()
+    directories: []
 };
 
-export default (state = INITIAL_STATE) => {
+export default (state = INITIAL_STATE, action) => {
+
+    switch (action.type) {
+
+        case INIT:
+            return { directories: action.data.dirs };
+
+    }
+
     return state;
+
 };

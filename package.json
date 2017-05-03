@@ -7,6 +7,7 @@
     "prebuild": "rimraf public && mkdir -p public",
     "build": "webpack",
     "postbuild": "htmlmin -o public/index.html src/index.html",
+    "watch": "webpack --watch",
     "test": "ava",
     "start": "babel-node server/default.js"
   },

@@ -1,5 +1,5 @@
 module.exports = {
-    entry: './src/js/default.js',
+    entry: ['babel-polyfill', './src/js/default.js'],
     output: {
         filename: './public/js/default.js',
         libraryTarget: 'var'

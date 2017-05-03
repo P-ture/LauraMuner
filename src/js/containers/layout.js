@@ -1,9 +1,10 @@
 import React, { PureComponent, PropTypes } from 'react';
-import { Provider, connect }                         from 'react-redux';
+import { Provider, connect }               from 'react-redux';
 import { identity }                        from 'ramda';
 import { createStore, applyMiddleware }    from 'redux';
 import thunk                               from 'redux-thunk';
 import reducer                             from '../../../src/js/reducer';
+import { INIT }                            from '../../../src/js/types';
 
 /**
  * @class Layout
@@ -33,5 +34,12 @@ const Layout = connect(identity)(class Layout extends PureComponent {
 
 });
 
-const store = createStore(reducer, applyMiddleware(thunk));
-export default <Provider store={store}><Layout /></Provider>;
+/**
+ * @param {Object} data
+ * @return {Object}
+ */
+export default data => {
+    const store = createStore(reducer, applyMiddleware(thunk));
+    store.dispatch({ type: INIT, data });
+    return <Provider store={store}><Layout /></Provider>;
+};
