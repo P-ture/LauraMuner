@@ -32,7 +32,7 @@ section.layout {
       height: 100%;
       max-width: 500px;
       background: url('../../images/profile.png') no-repeat left center,
-                  url('../../images/logo.png') no-repeat ($header-height + 20px) $header-padding;
+                  url('../../images/logo.png') no-repeat ($header-height + 20px) (calc(50% - (#{($top-gradient-height + $bottom-gradient-height) / 2})));
       background-size: $header-height $header-height, calc(100% - (#{$header-height + 40px})) auto;
 
       @media screen and (max-width: 360px) {
