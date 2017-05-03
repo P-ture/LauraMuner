@@ -4,7 +4,7 @@ import { identity }                        from 'ramda';
 import { createStore, applyMiddleware }    from 'redux';
 import thunk                               from 'redux-thunk';
 import reducer                             from '../../../src/js/reducer';
-import { INIT }                            from '../../../src/js/types';
+import { init }                            from '../../../src/js/actions';
 
 /**
  * @class Layout
@@ -40,6 +40,6 @@ const Layout = connect(identity)(class Layout extends PureComponent {
  */
 export default data => {
     const store = createStore(reducer, applyMiddleware(thunk));
-    store.dispatch({ type: INIT, data });
+    store.dispatch(init(data));
     return <Provider store={store}><Layout /></Provider>;
 };
