@@ -16,9 +16,9 @@ const Layout = connect(identity)(class Layout extends PureComponent {
      * @constant directories
      * @type {Object}
      */
-    // static propTypes = {
-    //     directories: PropTypes.array.isRequired
-    // };
+    static propTypes = {
+        directories: PropTypes.array.isRequired
+    };
 
     /**
      * @method render
@@ -27,7 +27,21 @@ const Layout = connect(identity)(class Layout extends PureComponent {
     render() {
 
         return (
-            <h1>Laura Muner {this.props.directories.length}</h1>
+            <section className="layout">
+
+                <header>
+                    <h1>Laura Muner Architecture</h1>
+                </header>
+
+                <main>
+                    Content...
+                </main>
+
+                <footer>
+                    <p>Web site graphics by Micro Muner / Web site structure by <a href="">Pture</a>.</p>
+                </footer>
+
+            </section>
         );
 
     }

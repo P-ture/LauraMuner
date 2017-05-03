@@ -5,8 +5,10 @@
   "main": "js/default.js",
   "scripts": {
     "prebuild": "rimraf public && mkdir -p public",
-    "build": "webpack",
-    "postbuild": "htmlmin -o public/index.html src/index.html",
+    "build": "webpack & npm run html & npm run sass & npm run images & wait",
+    "html": "htmlmin -o public/index.html src/index.html",
+    "sass": "node-sass src/css/default.scss public/css/default.css",
+    "images": "ncp src/images public/images",
     "watch": "webpack --watch",
     "test": "ava",
     "start": "babel-node server/default.js"
@@ -44,6 +46,7 @@
     "babel-preset-stage-0": "~6.22.0",
     "html-minifier-cli": "~0.1.0",
     "ncp": "~2.0.0",
+    "node-sass": "~4.5.1",
     "rimraf": "~2.6.1",
     "webpack": "~2.3.2"
   }
