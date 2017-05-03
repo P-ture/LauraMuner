@@ -34,7 +34,21 @@ const Layout = connect(identity)(class Layout extends PureComponent {
                 </header>
 
                 <main>
-                    Content...
+
+                    <div className="gallery">
+                        <img src="http://www.architecturalrecord.com/ext/resources/Issues/2016/May/1605-Architecture-Creativity-wHY-Louisville-Speed-Art-Museum-01.jpg" alt="" />
+                        <ul className="description">
+                            <li>Title</li>
+                            <li>Synopsis</li>
+                        </ul>
+                    </div>
+
+                    <ul className="list">
+                        <li>Item 1</li>
+                        <li>Item 2</li>
+                        <li>Item 3</li>
+                    </ul>
+
                 </main>
 
                 <footer>
