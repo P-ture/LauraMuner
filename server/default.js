@@ -29,7 +29,7 @@ const indexPage = (req, res) => {
 app.use(compression({ level: Z_BEST_COMPRESSION }));
 app.get('/', indexPage);
 app.get(/\.html$/i, indexPage);
-app.get('/directories.json', (req, res) => res.send({ dirs }));
+app.get('/directories.json', (_, res) => res.send({ dirs }));
 app.use(express.static(index));
 
 server.listen(port);
