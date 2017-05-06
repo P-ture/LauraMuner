@@ -13,11 +13,11 @@ import { init }                            from '../../../src/js/actions';
 const Layout = connect(identity)(class Layout extends PureComponent {
 
     /**
-     * @constant directories
+     * @constant propTypes
      * @type {Object}
      */
     static propTypes = {
-        directories: PropTypes.array.isRequired
+        media: PropTypes.array.isRequired
     };
 
     /**

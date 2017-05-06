@@ -5,7 +5,7 @@ import { INIT } from './types';
  * @type {Object}
  */
 const INITIAL_STATE = {
-    directories: []
+    media: []
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -13,7 +13,7 @@ export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
 
         case INIT:
-            return { directories: action.data.dirs };
+            return { media: action.payload.media };
 
     }
 

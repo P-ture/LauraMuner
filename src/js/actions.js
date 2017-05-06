@@ -2,9 +2,9 @@ import { INIT } from './types';
 
 /**
  * @method init
- * @param {Object} data
+ * @param {Object} payload
  * @return {Object}
  */
-export const init = data => {
-    return { type: INIT, data };
+export const init = payload => {
+    return { type: INIT, payload };
 };

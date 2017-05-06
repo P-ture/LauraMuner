@@ -1,18 +1,41 @@
-import http                          from 'http';
-import { Z_BEST_COMPRESSION }        from 'zlib';
-import { readFileSync, readdirSync } from 'fs';
-import express                       from 'express';
-import compression                   from 'compression';
-import React                         from 'react';
-import { renderToString }            from 'react-dom/server';
-import format                        from 'string-template';
-import createStore                   from '../src/js/containers/layout';
+import http                   from 'http';
+import { Z_BEST_COMPRESSION } from 'zlib';
+import fs                     from 'fs';
+import express                from 'express';
+import yaml                   from 'js-yaml';
+import compression            from 'compression';
+import React                  from 'react';
+import { renderToString }     from 'react-dom/server';
+import format                 from 'string-template';
+import createStore            from '../src/js/containers/layout';
 
-const app    = express();
-const server = http.createServer(app);
-const port   = process.env.PORT || 5000;
-const index  = `${__dirname}/../public`;
-const dirs   = readdirSync(`${__dirname}/../src/images/gallery`);
+const app       = express();
+const server    = http.createServer(app);
+const port      = process.env.PORT || 5000;
+const metaFile  = 'meta.yml';
+const mediaPath = 'images/media';
+const index     = `${__dirname}/../public`;
+const media = () => fs.readdirSync(`${__dirname}/../src/${mediaPath}`).map(gallery);
+
+/**
+ * @method gallery
+ * @param {String} dir
+ * @return {Object}
+ */
+const gallery = dir => {
+
+    const path     = `${__dirname}/../src/${mediaPath}/${dir}`;
+    const files    = fs.readdirSync(path);
+    const yamlPath = `${path}/${metaFile}`;
+    const meta     =  fs.existsSync(yamlPath) ? fs.readFileSync(yamlPath, 'utf8') : '';
+
+    return {
+        ...yaml.safeLoad(meta),
+        dir: `${mediaPath}/${dir}`,
+        media: files.filter(file => file !== metaFile)
+    };
+
+};
 
 /**
  * @method indexPage
@@ -21,15 +44,15 @@ const dirs   = readdirSync(`${__dirname}/../src/images/gallery`);
  * @return {Object}
  */
 const indexPage = (req, res) => {
-    const page = readFileSync(`${index}/index.html`, 'utf-8');
-    const html = renderToString(createStore({ dirs }));
+    const page = fs.readFileSync(`${index}/index.html`, 'utf-8');
+    const html = renderToString(createStore({ media: media() }));
     res.send(format(page, { html }));
 };
 
 app.use(compression({ level: Z_BEST_COMPRESSION }));
 app.get('/', indexPage);
 app.get(/\.html$/i, indexPage);
-app.get('/directories.json', (_, res) => res.send({ dirs }));
+app.get('/media.json', (_, res) => res.send(media()));
 app.use(express.static(index));
 
 server.listen(port);

@@ -5,8 +5,8 @@ import createStore from './containers/layout';
 
 ready().then(async () => {
 
-    const { dirs }  = await fetch('/directories.json').then(response => response.json());
+    const media     = await fetch('/media.json').then(response => response.json());
     const mountNode = document.querySelector('section.app');
-    mountNode && render(createStore({ dirs }), mountNode);
+    mountNode && render(createStore({ media }), mountNode);
 
 });
