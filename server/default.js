@@ -15,14 +15,14 @@ const port      = process.env.PORT || 5000;
 const metaFile  = 'meta.yml';
 const mediaPath = 'images/media';
 const index     = `${__dirname}/../public`;
-const media = () => fs.readdirSync(`${__dirname}/../src/${mediaPath}`).map(gallery);
+const media     = () => fs.readdirSync(`${__dirname}/../src/${mediaPath}`).map(load);
 
 /**
- * @method gallery
+ * @method load
  * @param {String} dir
  * @return {Object}
  */
-const gallery = dir => {
+const load = dir => {
 
     const path     = `${__dirname}/../src/${mediaPath}/${dir}`;
     const files    = fs.readdirSync(path);
