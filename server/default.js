@@ -7,6 +7,7 @@ import compression            from 'compression';
 import React                  from 'react';
 import { renderToString }     from 'react-dom/server';
 import format                 from 'string-template';
+import { StaticRouter }       from 'react-router-dom';
 import createStore            from '../src/js/containers/layout';
 
 const app       = express();
@@ -31,8 +32,8 @@ const load = dir => {
 
     return {
         ...yaml.safeLoad(meta),
-        dir: `${mediaPath}/${dir}`,
-        media: files.filter(file => file !== metaFile)
+        slug: dir,
+        media: files.filter(file => file !== metaFile).map(file => `${mediaPath}/${dir}/${file}`)
     };
 
 };
@@ -44,9 +45,16 @@ const load = dir => {
  * @return {Object}
  */
 const indexPage = (req, res) => {
+
     const page = fs.readFileSync(`${index}/index.html`, 'utf-8');
-    const html = renderToString(createStore({ media: media() }));
+    const html = renderToString((
+        <StaticRouter location={req.url} context={{}}>
+            {createStore({ media: media() })}
+        </StaticRouter>
+    ));
+
     res.send(format(page, { html }));
+
 };
 
 app.use(compression({ level: Z_BEST_COMPRESSION }));

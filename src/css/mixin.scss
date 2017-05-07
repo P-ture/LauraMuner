@@ -1,0 +1,27 @@
+@import "./config";
+
+@mixin triangle-right($size) {
+  width: 0;
+  height: 0;
+  border-top: ($size / 2) solid transparent;
+  border-left: $size solid $theme-colour;
+  border-bottom: ($size / 2) solid transparent;
+  transition: border-left .25s;
+
+  &:hover {
+    border-left: $size solid darken($theme-colour, 10);
+  }
+}
+
+@mixin triangle-left($size) {
+  width: 0;
+  height: 0;
+  border-top: ($size / 2) solid transparent;
+  border-right: $size solid $theme-colour;
+  border-bottom: ($size / 2) solid transparent;
+  transition: border-right .25s;
+
+  &:hover {
+    border-right: $size solid darken($theme-colour, 10);
+  }
+}
