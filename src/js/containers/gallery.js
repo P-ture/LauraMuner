@@ -1,11 +1,40 @@
 import React, { PureComponent, PropTypes } from 'react';
+import { splitEvery, any }                 from 'ramda';
+import { NavLink, withRouter }             from 'react-router-dom';
 import hash                                from 'object-hash';
+import Carousel                            from '../components/carousel';
+
+/**
+ * @method Item
+ * @param {Object} props
+ * @constructor
+ */
+const Item = props => {
+
+    return (
+        <div className="group">
+
+            {props.model.map((model, index) => {
+
+                return (
+                    <NavLink to={`/${model.slug}.html`} key={hash(model)}>
+                        <img src={`/media/${model.slug}/thumbnail.png`} alt={`Image ${index}`} />
+                        <label>{model.label}</label>
+                    </NavLink>
+                );
+
+            })}
+
+        </div>
+    );
+
+};
 
 /**
  * @class Gallery
  * @extends {PureComponent}
  */
-export default class Gallery extends PureComponent {
+export default withRouter(class Gallery extends PureComponent {
 
     /**
      * @constant propTypes
@@ -14,7 +43,7 @@ export default class Gallery extends PureComponent {
     static propTypes = {
         media: PropTypes.array.isRequired,
         model: PropTypes.shape({
-            title: PropTypes.string.isRequired,
+            title:    PropTypes.string.isRequired,
             synopsis: PropTypes.string.isRequired
         }).isRequired
     };
@@ -31,38 +60,39 @@ export default class Gallery extends PureComponent {
     };
 
     /**
+     * @method isActive
+     * @param {Array} model
+     * @param {Number} index
+     * @return {Boolean}
+     */
+    isActive({ model, index }) {
+
+        const { name } = this.props.match.params;
+        const slugs    = model.map(model => model.slug);
+
+        return name ? any(slug => name === slug)(slugs) : index === 0;
+
+    }
+
+    /**
      * @method render
      * @return {XML}
      */
     render() {
 
-        const { model } = this.props;
+        const { model, media } = this.props;
 
         return (
             <section className="gallery">
 
                 <div className="left">
 
-                    <div className="carousel">
-
-                        {model.media.map((path, index) => {
-
-                            const length  = model.media.length - 1;
-                            const isFirst = index === 0;
-                            const isLast  = index === length;
-
-                            return [
-                                <input type="radio" defaultChecked={index === 0} name="position" id={`position-${index}`} />,
-                                <div className="item">
-                                    <label htmlFor={`position-${isFirst ? length : index - 1}`} className="previous" />
-                                    <img key={hash(path)} src={path} alt={`Image ${index}`} />
-                                    <label htmlFor={`position-${isLast ? 0 : index + 1}`} className="next" />
-                                </div>
-                            ];
-
-                        })}
-
-                    </div>
+                    <Carousel
+                        id="carousel-left"
+                        items={model.media}
+                        component={({ model, index }) => <img src={model} alt={`Image ${index}`} />}
+                        isActive={({ index }) => index === 0}
+                        />
 
                     <ul className="description">
                         <li>{model.title}</li>
@@ -73,11 +103,12 @@ export default class Gallery extends PureComponent {
 
                 <div className="right">
 
-                    <ul className="list">
-                        <li>Item 1</li>
-                        <li>Item 2</li>
-                        <li>Item 3</li>
-                    </ul>
+                    <Carousel
+                        id="carousel-right"
+                        items={splitEvery(3, media)}
+                        component={({ model, index }) => <Item model={model} index={index} />}
+                        isActive={this.isActive.bind(this)}
+                        />
 
                 </div>
 
@@ -86,4 +117,4 @@ export default class Gallery extends PureComponent {
 
     }
 
-}
+});

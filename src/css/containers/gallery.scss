@@ -13,55 +13,31 @@
     display: flex;
     flex-direction: column;
 
-    > div.carousel {
+    > section.carousel {
       height: calc(100% - 100px);
       width: 100%;
       background-color: rgba(255, 255, 255, .1);
-      overflow: hidden;
-      position: relative;
 
-      > input[type="radio"] {
-        opacity: 0;
-        pointer-events: none;
-        display: none;
+      > div.item > label {
+        $size: 20px;
 
-        &:checked + div.item {
-          display: block;
-        }
-      }
+        position: absolute;
+        user-select: none;
+        width: $size;
+        height: $size;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        cursor: pointer;
 
-      > div.item {
-        width: 100%;
-        height: 100%;
-        display: none;
-
-        > img {
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
+        &.previous {
+          @include triangle-left($size);
+          left: 10px;
         }
 
-        > label {
-          $size: 20px;
-
-          position: absolute;
-          user-select: none;
-          width: 30px;
-          height: 30px;
-          top: 0;
-          bottom: 0;
-          margin: auto;
-          cursor: pointer;
-
-          &.previous {
-            @include triangle-left($size);
-            left: 10px;
-          }
-
-          &.next {
-            @include triangle-right($size);
-            right: 10px;
-          }
+        &.next {
+          @include triangle-right($size);
+          right: 10px;
         }
       }
     }
@@ -87,17 +63,85 @@
     flex: 1 1 30%;
     max-width: 30%;
     height: 100%;
+    padding-left: 10px;
 
-    > ul.list {
+    > section.carousel {
+      width: 100%;
       height: 100%;
-      flex-direction: column;
-      font-family: Arial, Tahoma, Helvetica, sans-serif;
-      color: white;
-      list-style-type: none;
       display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+      flex-direction: column;
 
+      > div.item {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+
+        $size: 20px;
+
+        > label {
+          height: $size;
+          width: $size;
+          display: block;
+          position: absolute;
+          cursor: pointer;
+
+          &.previous {
+            @include triangle-up($size);
+            left: 0;
+            right: 0;
+            top: $size / 2;
+            margin: auto;
+          }
+
+          &.next {
+            @include triangle-down($size);
+            left: 0;
+            right: 0;
+            bottom: $size / 2;
+            margin: auto;
+
+          }
+        }
+
+        > div.group {
+          height: 100%;
+          padding: ($size + ($size / 2)) 0;
+          display: flex;
+          flex-direction: column;
+
+          > a {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            max-height: 33.3%;
+            overflow: hidden;
+
+            &.active > label {
+              color: $theme-colour;
+            }
+
+            > img {
+              width: 100%;
+              height: calc(100% - 50px);
+              object-fit: contain;
+            }
+
+            > label {
+              color: white;
+              text-transform: uppercase;
+              padding-top: 10px;
+              font-family: Arial, Tahoma, Helvetica, sans-serif;
+              font-size: 11px;
+              transition: color .25s;
+            }
+          }
+        }
+      }
+    }
   }
 }

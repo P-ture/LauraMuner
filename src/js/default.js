@@ -8,6 +8,6 @@ ready().then(async () => {
 
     const media     = await fetch('/media.json').then(response => response.json());
     const mountNode = document.querySelector('section.app');
-    mountNode && render(<BrowserRouter>{createStore({ media })}</BrowserRouter>, mountNode);
+    mountNode && render(createStore({ media }, app => <BrowserRouter>{app}</BrowserRouter>), mountNode);
 
 });

@@ -10,4 +10,5 @@ section.app {
   background-color: black;
 
   @import "./containers/layout";
+  @import "./components/carousel";
 }

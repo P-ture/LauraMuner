@@ -3,8 +3,9 @@ import { Provider, connect }               from 'react-redux';
 import { identity }                        from 'ramda';
 import { createStore, applyMiddleware }    from 'redux';
 import thunk                               from 'redux-thunk';
-import { Route }                           from 'react-router-dom';
+import { Route, withRouter }               from 'react-router-dom';
 import { find }                            from 'ramda';
+import generate                            from 'shortid';
 import reducer                             from '../../../src/js/reducer';
 import { init }                            from '../../../src/js/actions';
 import Gallery                             from '../../../src/js/containers/gallery';
@@ -13,7 +14,7 @@ import Gallery                             from '../../../src/js/containers/gall
  * @class Layout
  * @extends {PureComponent}
  */
-const Layout = connect(identity)(class Layout extends PureComponent {
+const Layout = withRouter(connect(identity)(class Layout extends PureComponent {
 
     /**
      * @constant propTypes
@@ -24,17 +25,16 @@ const Layout = connect(identity)(class Layout extends PureComponent {
     };
 
     /**
-     * @method load
-     * @param {Object} match
+     * @method find
+     * @param {String} slug
      * @return {Object}
      */
-    load({ match }) {
+    find(slug) {
 
-        const { name } = match.params;
-        const model    = find(model => model.slug === name)(this.props.media);
-        const props    = { model, media: this.props.media };
+        const model = find(model => model.slug === slug)(this.props.media);
+        const props = { model, media: this.props.media };
 
-        return <Gallery {...props} />;
+        return <Gallery key={generate()} {...props} />;
 
     }
 
@@ -44,15 +44,18 @@ const Layout = connect(identity)(class Layout extends PureComponent {
      */
     render() {
 
+        const { media } = this.props;
+
         return (
             <section className="layout">
 
-                <header><h1>Laura Muner Architecture</h1></header>
+                <header>
+                    <a href="/"><h1>Laura Muner Architecture</h1></a>
+                </header>
 
                 <main>
-
-                    <Route path="/:name.html" render={this.load.bind(this)} />
-
+                    <Route path="/:name.html" render={({ match }) => this.find(match.params.name)} />
+                    <Route path="/" exact     render={({ match }) => this.find(media[0].slug)} />
                 </main>
 
                 <footer><p>Web site graphics by Micro Muner / Web site structure by <a href="">Pture</a>.</p></footer>
@@ -62,14 +65,15 @@ const Layout = connect(identity)(class Layout extends PureComponent {
 
     }
 
-});
+}));
 
 /**
  * @param {Object} data
+ * @param {Object} wrapper
  * @return {Object}
  */
-export default data => {
+export default (data, wrapper) => {
     const store = createStore(reducer, applyMiddleware(thunk));
     store.dispatch(init(data));
-    return <Provider store={store}><Layout /></Provider>;
+    return <Provider store={store}>{wrapper(<Layout />)}</Provider>;
 };
