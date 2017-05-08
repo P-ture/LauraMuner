@@ -4,6 +4,7 @@ import generate                            from 'shortid';
 /**
  * @class Carousel
  * @extends {PureComponent}
+ Just adding text
  */
 export default class Carousel extends PureComponent {
 
