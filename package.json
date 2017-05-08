@@ -5,7 +5,8 @@
   "main": "js/default.js",
   "scripts": {
     "prebuild": "rimraf public && mkdir -p public",
-    "build": "webpack & npm run html & npm run sass & npm run images & wait",
+    "build": "webpack & npm run html & npm run sass & npm run api & npm run images & wait",
+    "api": "ncp src/api public/api",
     "html": "htmlmin -o public/index.html src/index.html",
     "sass": "node-sass src/css/default.scss public/css/default.css",
     "images": "ncp src/images public/images",
