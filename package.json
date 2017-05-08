@@ -13,7 +13,7 @@
     "watch": "webpack --watch",
     "test": "ava",
     "prestart": "npm i && npm run build",
-    "start": "babel-node server/default.js"
+    "start": "(cd public && php -S localhost:5000)"
   },
   "repository": {
     "type": "git",
@@ -26,10 +26,8 @@
   },
   "homepage": "https://github.com/Wildhoney/LauraMuner#readme",
   "dependencies": {
-    "compression": "~1.6.2",
     "document-ready-promise": "~3.0.1",
     "es6-symbol": "~3.1.1",
-    "express": "~4.15.2",
     "js-yaml": "~3.8.2",
     "object-hash": "~1.1.8",
     "ramda": "~0.23.0",
@@ -39,7 +37,6 @@
     "react-router-dom": "~4.0.0",
     "redux": "~3.6.0",
     "redux-thunk": "~2.2.0",
-    "sharp": "~0.17.3",
     "shortid": "~2.2.8",
     "string-template": "~1.0.0"
   },

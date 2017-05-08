@@ -17,8 +17,8 @@ const Item = props => {
             {props.model.map((model, index) => {
 
                 return (
-                    <NavLink to={`/${model.slug}.html`} key={hash(model)}>
-                        <img src={`/media/${model.slug}/thumbnail.png`} alt={`Image ${index}`} />
+                    <NavLink to={`/${model.slug}`} key={hash(model)}>
+                        <img src={`/api/thumbnail.php?slug=${model.slug}`} alt={`Image ${index}`} />
                         <label>{model.label}</label>
                     </NavLink>
                 );

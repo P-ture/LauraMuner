@@ -54,8 +54,8 @@ const Layout = withRouter(connect(identity)(class Layout extends PureComponent {
                 </header>
 
                 <main>
-                    <Route path="/:name.html" render={({ match }) => this.find(match.params.name)} />
-                    <Route path="/" exact     render={({ match }) => this.find(media[0].slug)} />
+                    <Route path="/:name"  render={({ match }) => this.find(match.params.name)} />
+                    <Route path="/" exact render={({ match }) => this.find(media[0].slug)} />
                 </main>
 
                 <footer><p>Web site graphics by Micro Muner / Web site structure by <a href="">Pture</a>.</p></footer>
