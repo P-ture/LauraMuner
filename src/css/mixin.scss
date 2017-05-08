@@ -6,10 +6,11 @@
   border-top: ($size / 2) solid transparent;
   border-left: $size solid $theme-colour;
   border-bottom: ($size / 2) solid transparent;
-  transition: border-left .25s;
+  transition: opacity .25s;
+  opacity: .9;
 
   &:hover {
-    border-left: $size solid darken($theme-colour, 10);
+    opacity: 1;
   }
 }
 
@@ -19,10 +20,11 @@
   border-top: ($size / 2) solid transparent;
   border-right: $size solid $theme-colour;
   border-bottom: ($size / 2) solid transparent;
-  transition: border-right .25s;
+  transition: opacity .25s;
+  opacity: .9;
 
   &:hover {
-    border-right: $size solid darken($theme-colour, 10);
+    opacity: 1;
   }
 }
 
@@ -32,10 +34,11 @@
   border-left: ($size / 2) solid transparent;
   border-right: ($size / 2) solid transparent;
   border-bottom: $size solid $theme-colour;
-  transition: border-bottom .25s;
+  transition: opacity .25s;
+  opacity: .9;
 
   &:hover {
-    border-bottom: $size solid darken($theme-colour, 10);
+    opacity: 1;
   }
 }
 
@@ -45,9 +48,10 @@
   border-left: ($size / 2) solid transparent;
   border-right: ($size / 2) solid transparent;
   border-top: $size solid $theme-colour;
-  transition: border-top .25s;
+  transition: opacity .25s;
+  opacity: .9;
 
   &:hover {
-    border-top: $size solid darken($theme-colour, 10);
+    opacity: 1;
   }
 }

@@ -2,6 +2,7 @@ import React, { PureComponent, PropTypes } from 'react';
 import { splitEvery, any }                 from 'ramda';
 import { NavLink, withRouter }             from 'react-router-dom';
 import hash                                from 'object-hash';
+import MediaQuery                          from 'react-responsive';
 import Carousel                            from '../components/carousel';
 
 /**
@@ -103,12 +104,27 @@ export default withRouter(class Gallery extends PureComponent {
 
                 <div className="right">
 
-                    <Carousel
-                        id="carousel-right"
-                        items={splitEvery(3, media)}
-                        component={({ model, index }) => <Item model={model} index={index} />}
-                        isActive={this.isActive.bind(this)}
-                        />
+                    <MediaQuery query="(min-width: 481px)">
+
+                        <Carousel
+                            id="carousel-right"
+                            items={splitEvery(3, media)}
+                            component={({ model, index }) => <Item model={model} index={index} />}
+                            isActive={this.isActive.bind(this)}
+                            />
+
+                    </MediaQuery>
+
+                    <MediaQuery query="(max-width: 480px)">
+
+                        <Carousel
+                            id="carousel-right"
+                            items={splitEvery(2, media)}
+                            component={({ model, index }) => <Item model={model} index={index} />}
+                            isActive={this.isActive.bind(this)}
+                            />
+
+                    </MediaQuery>
 
                 </div>
 

@@ -7,16 +7,33 @@
   width: 100%;
   height: 100%;
 
+  @media screen and (max-width: $media-break-point) {
+    flex-direction: column;
+  }
+
   > div.left {
     flex: 1 1 70%;
     max-width: 70%;
     display: flex;
     flex-direction: column;
 
+    @media screen and (max-width: $media-break-point) {
+      flex-direction: column;
+      flex: 1 1 100%;
+      width: 100%;
+      max-width: 100%;
+      max-height: calc(100% - 200px);
+      height: calc(100% - 200px);
+    }
+
     > section.carousel {
-      height: calc(100% - 100px);
+      height: calc(100% - 200px);
       width: 100%;
       background-color: rgba(255, 255, 255, .1);
+
+      @media screen and (max-width: $media-break-point) {
+        height: calc(100% - 100px);
+      }
 
       > div.item > label {
         $size: 20px;
@@ -66,6 +83,13 @@
     user-select: none;
     padding-left: 10px;
 
+    @media screen and (max-width: $media-break-point) {
+      flex: auto;
+      max-width: 100%;
+      height: 200px;
+      padding-left: 0;
+    }
+
     > section.carousel {
       width: 100%;
       height: 100%;
@@ -93,6 +117,14 @@
             right: 0;
             top: $size / 2;
             margin: auto;
+
+            @media screen and (max-width: $media-break-point) {
+              @include triangle-left($size);
+              left: 5px;
+              top: 0;
+              bottom: 0;
+              right: auto;
+            }
           }
 
           &.next {
@@ -102,6 +134,13 @@
             bottom: $size / 2;
             margin: auto;
 
+            @media screen and (max-width: $media-break-point) {
+              @include triangle-right($size);
+              right: 5px;
+              top: 0;
+              bottom: 0;
+              left: auto;
+            }
           }
         }
 
@@ -110,6 +149,11 @@
           padding: ($size + ($size / 2)) 0;
           display: flex;
           flex-direction: column;
+
+          @media screen and (max-width: $media-break-point) {
+            flex-direction: row;
+            padding: 0 ($size * 4);
+          }
 
           > a {
             width: 100%;
@@ -122,6 +166,11 @@
             max-height: 33.3%;
             overflow: hidden;
 
+            @media screen and (max-width: $media-break-point) {
+              max-height: 100%;
+              margin: 0 ($size / 2);
+            }
+
             &.active > label {
               color: $theme-colour;
             }
@@ -130,6 +179,11 @@
               width: 100%;
               height: calc(100% - 50px);
               object-fit: contain;
+
+              @media screen and (max-width: $media-break-point) {
+                height: 75%;
+                background-color: rgba(255, 255, 255, .1);
+              }
             }
 
             > label {
@@ -139,6 +193,10 @@
               font-family: Arial, Tahoma, Helvetica, sans-serif;
               font-size: 11px;
               transition: color .25s;
+
+              @media screen and (max-width: $media-break-point) {
+                height: 25%;
+              }
             }
           }
         }
