@@ -4,6 +4,14 @@
   box-sizing: border-box;
 }
 
+a {
+  color: #000;
+  transition: all 0.3s;
+  &:hover {
+    color: #fff;
+  }
+}
+
 section.app {
   width: 100vw;
   height: 100vh;
@@ -11,4 +19,5 @@ section.app {
 
   @import "./containers/layout";
   @import "./components/carousel";
+  @import "./components/contact";
 }

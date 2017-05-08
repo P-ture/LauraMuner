@@ -9,6 +9,7 @@ import generate                            from 'shortid';
 import reducer                             from '../../../src/js/reducer';
 import { init }                            from '../../../src/js/actions';
 import Gallery                             from '../../../src/js/containers/gallery';
+import Contact                             from '../../../src/js/components/contact';
 
 /**
  * @class Layout
@@ -58,7 +59,7 @@ const Layout = withRouter(connect(identity)(class Layout extends PureComponent {
                     <Route path="/" exact render={({ match }) => this.find(media[0].slug)} />
                 </main>
 
-                <footer><p>Web site graphics by Micro Muner / Web site structure by <a href="">Pture</a>.</p></footer>
+                <footer><p>&copy;Copyright Laura Muner Architect / Web site structure by <a href="">AsSoonAsSeen</a>.</p><Contact /></footer>
 
             </section>
         );

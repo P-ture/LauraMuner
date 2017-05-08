@@ -76,12 +76,7 @@ section.layout {
     width: 100vw;
     background-color: $theme-colour;
     align-items: center;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     padding: 0 20px;
-
-    > p > a {
-      color: black;
-    }
   }
 }
