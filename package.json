@@ -12,6 +12,7 @@
     "images": "ncp src/images public/images",
     "watch": "webpack --watch",
     "test": "ava",
+    "prestart": "npm i && npm run build",
     "start": "babel-node server/default.js"
   },
   "repository": {
