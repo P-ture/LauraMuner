@@ -1,7 +1,7 @@
 @import '../config';
 
 section.layout {
-
+  background: black;
   > header {
     height: $header-height;
     width: 100vw;
@@ -66,6 +66,9 @@ section.layout {
     width: 100vw;
     display: flex;
     flex-wrap: wrap;
+    @media screen and (max-height: $media-break-point) {
+      height: 100vh;
+    }
   }
 
   > footer {
