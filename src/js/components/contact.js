@@ -20,13 +20,13 @@ export default class Contact extends PureComponent {
 
         return (
             <section className="contact">
-                <a onClick={() => this.setState({visible: true})}></a>
+                <a onClick={() => this.setState({visible: true})}>Contact</a>
                 { this.state.visible ?
                     <section>
                         <section>
                             <div>
                                 <h5>Contact</h5>
-                                <p onClick={() => this.setState({visible: false})}></p>
+                                <a onClick={() => this.setState({visible: false})}>Close</a>
                             </div>
                             <ul>
                                 <li>0044 (0)77 91 075 281</li>
