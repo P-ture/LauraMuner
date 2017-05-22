@@ -82,16 +82,22 @@ export default withRouter(class Gallery extends PureComponent {
     render() {
 
         const { model, media } = this.props;
+        console.log(model);
+        console.log(media);
 
         return (
             <section className="gallery">
 
-                <div className="left">
 
+
+                <div className="left">
+ß
                     <Carousel
                         id="carousel-left"
                         items={model.media}
-                        component={({ model, index }) => <img src={model} alt={`Image ${index}`} />}
+                        component={({ model, index }) => {
+                            return <img src={model} alt={`Image ${index}`} />
+                        }}
                         isActive={({ index }) => index === 0}
                         />
 
