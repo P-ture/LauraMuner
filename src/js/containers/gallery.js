@@ -4,6 +4,7 @@ import { NavLink, withRouter }             from 'react-router-dom';
 import hash                                from 'object-hash';
 import MediaQuery                          from 'react-responsive';
 import Carousel                            from '../components/carousel';
+import Video                               from '../components/video';
 
 /**
  * @method Item
@@ -16,7 +17,6 @@ const Item = props => {
         <div className="group">
 
             {props.model.map((model, index) => {
-
                 return (
                     <NavLink to={`/${model.slug}`} key={hash(model)}>
                         <img src={`/api/thumbnail.php?slug=${model.slug}`} alt={`Image ${index}`} />
@@ -82,8 +82,6 @@ export default withRouter(class Gallery extends PureComponent {
     render() {
 
         const { model, media } = this.props;
-        console.log(model);
-        console.log(media);
 
         return (
             <section className="gallery">
@@ -96,7 +94,9 @@ export default withRouter(class Gallery extends PureComponent {
                         id="carousel-left"
                         items={model.media}
                         component={({ model, index }) => {
-                            return <img src={model} alt={`Image ${index}`} />
+                            const extension = model.split(/\./i).pop();
+                            const isVideo = extension === 'mp4';
+                            return isVideo ? <Video src={model} /> : <img src={model} alt={`Image ${index}`} />
                         }}
                         isActive={({ index }) => index === 0}
                         />
