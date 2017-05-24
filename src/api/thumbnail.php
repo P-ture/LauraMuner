@@ -45,7 +45,8 @@ function generate_image_thumbnail($source_image_path) {
 $read = function($path) {
 
     return array_values(array_filter(scandir($path), function($file) {
-        return $file != '.' && $file != '..';
+        $ext = pathinfo($file)['extension'];
+        return $file != '.' && $file != '..' && $ext != 'mp4' && $ext != 'json';
     }));
 
 };
