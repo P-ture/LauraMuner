@@ -2,11 +2,12 @@
 
 $path = "../images/media";
 $metaFile = 'meta.json';
+$osFile = '.DS_Store';
 
-$read = function($path) use ($metaFile) {
+$read = function($path) use ($metaFile, $osFile) {
 
-    return array_values(array_filter(scandir($path), function($file) use ($metaFile) {
-        return $file != '.' && $file != '..' && $file != $metaFile;
+    return array_values(array_filter(scandir($path), function($file) use ($metaFile, $osFile)  {
+        return $file != '.' && $file != '..' && $file != $metaFile && $file != $osFile;
     }));
 
 };

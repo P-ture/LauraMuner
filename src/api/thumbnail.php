@@ -1,7 +1,7 @@
 <?php
 
-define('THUMBNAIL_IMAGE_MAX_WIDTH', 200);
-define('THUMBNAIL_IMAGE_MAX_HEIGHT', 200);
+define('THUMBNAIL_IMAGE_MAX_WIDTH', 400);
+define('THUMBNAIL_IMAGE_MAX_HEIGHT', 400);
 
 function generate_image_thumbnail($source_image_path) {
 
@@ -46,7 +46,7 @@ $read = function($path) {
 
     return array_values(array_filter(scandir($path), function($file) {
         $ext = pathinfo($file)['extension'];
-        return $file != '.' && $file != '..' && $ext != 'mp4' && $ext != 'json';
+        return $file != '.' && $file != '..' && $ext != 'mp4' && $ext != 'json' && $ext != 'DS_Store';
     }));
 
 };
@@ -55,6 +55,5 @@ $path  = "../images/media";
 $slug  = preg_replace('/[^a-z0-9\-]/i', '', $_GET['slug']);
 $dir   = join(DIRECTORY_SEPARATOR, array($path, $slug));
 $image = join(DIRECTORY_SEPARATOR, array($path, $slug, $read($dir)[0]));
-
 header('Content-Type: image/png');
 echo generate_image_thumbnail($image);
