@@ -3,6 +3,7 @@ import { render }     from 'react-dom';
 import ready          from 'document-ready-promise';
 import { HashRouter } from 'react-router-dom';
 import createStore    from './containers/layout';
+import 'whatwg-fetch';
 
 ready().then(async () => {
 

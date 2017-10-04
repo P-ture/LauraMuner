@@ -1,7 +1,21 @@
 @import '../config';
 
 section.contact {
-  > a {
+  display: flex;
+  > a.socialMedia {
+    background: url("../images/instagram.svg") no-repeat 50%;
+    background-size: 30px;
+    padding: 10px 20px;
+    transition: all 0.4s;
+    cursor: pointer;
+    display: block;
+
+    &:hover {
+      background: url("../images/instagram-hover.svg") no-repeat 50%;
+      background-size: 30px;
+    }
+  }
+  > a:nth-child(2) {
     background: url("../images/contact.svg") no-repeat 50%;
     background-size: 30px;
     padding: 10px 20px;

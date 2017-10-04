@@ -20,6 +20,7 @@ export default class Contact extends PureComponent {
 
         return (
             <section className="contact">
+                <a className="socialMedia" href="#"></a>
                 <a onClick={() => this.setState({visible: true})}>Contact</a>
                 { this.state.visible ?
                     <section>

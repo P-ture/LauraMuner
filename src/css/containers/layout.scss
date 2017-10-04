@@ -17,16 +17,16 @@ section.layout {
       > h1 {
         text-indent: -1000px;
 
-        &::after {
-          content: "";
-          position: absolute;
-          bottom: $bottom-gradient-height;
-          right: 0;
-          height: $top-gradient-height;
-          width: 100vw;
-          background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, .5) 60%,
-              rgba(255, 255, 255, .5) 80%, rgba(255, 255, 255, 0) 100%);
-        }
+        // &::after {
+        //   content: "";
+        //   position: absolute;
+        //   bottom: $bottom-gradient-height;
+        //   right: 0;
+        //   height: $top-gradient-height;
+        //   width: 100vw;
+        //   background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, .5) 60%,
+        //       rgba(255, 255, 255, .5) 80%, rgba(255, 255, 255, 0) 100%);
+        // }
       }
     }
 
@@ -46,17 +46,17 @@ section.layout {
       }
     }
 
-    &::after {
-      content: "";
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      height: $bottom-gradient-height;
-      width: 100vw;
-      background: linear-gradient(to right, rgba(255, 255, 255,0) 0%, rgba(255, 255, 255,0) 25%,
-                                            rgba(255, 255, 255,1) 75%, rgba(255, 255, 255,1) 100%);
+    // &::after {
+    //   content: "";
+    //   position: absolute;
+    //   right: 0;
+    //   bottom: 0;
+    //   height: $bottom-gradient-height;
+    //   width: 100vw;
+    //   background: linear-gradient(to right, rgba(255, 255, 255,0) 0%, rgba(255, 255, 255,0) 25%,
+    //                                         rgba(255, 255, 255,1) 75%, rgba(255, 255, 255,1) 100%);
 
-    }
+    // }
   }
 
   > main {

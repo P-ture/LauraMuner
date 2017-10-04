@@ -59,7 +59,8 @@ const Layout = withRouter(connect(identity)(class Layout extends PureComponent {
                     <Route path="/" exact render={({ match }) => this.find(media[0].slug)} />
                 </main>
 
-                <footer><p>&copy;Copyright Laura Muner Architect / Web site structure by <a href="www.assoonasseen.co.uk">AsSoonAsSeen</a>.</p><Contact /></footer>
+                <footer>
+                    <p>&copy;Copyright Laura Muner Architect / Web site structure by <a href="www.assoonasseen.co.uk">AsSoonAsSeen</a> / Photographs by Michele Panzeri.</p><Contact /></footer>
 
             </section>
         );

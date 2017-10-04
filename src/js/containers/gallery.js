@@ -19,8 +19,9 @@ const Item = props => {
             {props.model.map((model, index) => {
                 return (
                     <NavLink to={`/${model.slug}`} key={hash(model)}>
-                        <img src={`/api/thumbnail.php?slug=${model.slug}`} alt={`Image ${index}`} />
-                        <label>{model.label}</label>
+                        <div>
+                            <label>{model.label}</label>
+                        </div>
                     </NavLink>
                 );
 
@@ -89,7 +90,7 @@ export default withRouter(class Gallery extends PureComponent {
 
 
                 <div className="left">
-ß
+
                     <Carousel
                         id="carousel-left"
                         items={model.media}
@@ -109,19 +110,20 @@ export default withRouter(class Gallery extends PureComponent {
                 </div>
 
                 <div className="right">
+                    <p>Projects</p>
 
-                    <MediaQuery query="(min-width: 481px)">
+                    <MediaQuery query="(min-width: 700px)">
 
                         <Carousel
                             id="carousel-right"
-                            items={splitEvery(3, media)}
+                            items={splitEvery(6, media)}
                             component={({ model, index }) => <Item model={model} index={index} />}
                             isActive={this.isActive.bind(this)}
                             />
 
                     </MediaQuery>
 
-                    <MediaQuery query="(max-width: 480px)">
+                    <MediaQuery query="(max-width: 699px)">
 
                         <Carousel
                             id="carousel-right"
