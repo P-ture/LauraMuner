@@ -14,20 +14,22 @@ import Video                               from '../components/video';
 const Item = props => {
 
     return (
-        <div className="group">
+        <section>
+            <div className="group">
 
-            {props.model.map((model, index) => {
-                return (
-                    <NavLink to={`/${model.slug}`} key={hash(model)}>
-                        <div>
-                            <label>{model.label}</label>
-                        </div>
-                    </NavLink>
-                );
+                {props.model.map((model, index) => {
+                    return (
+                        <NavLink to={`/${model.slug}`} key={hash(model)}>
+                            <div>
+                                <label>{model.label}</label>
+                            </div>
+                        </NavLink>
+                    );
 
-            })}
+                })}
 
-        </div>
+            </div>
+        </section>
     );
 
 };
@@ -127,7 +129,7 @@ export default withRouter(class Gallery extends PureComponent {
 
                         <Carousel
                             id="carousel-right"
-                            items={splitEvery(2, media)}
+                            items={splitEvery(3, media)}
                             component={({ model, index }) => <Item model={model} index={index} />}
                             isActive={this.isActive.bind(this)}
                             />

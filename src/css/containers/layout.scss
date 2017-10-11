@@ -6,6 +6,9 @@ section.layout {
     height: $header-height;
     width: 100vw;
     position: relative;
+    @media screen and (max-width: 360px) {
+      height: 50px;
+    }
 
     > a {
       width: 100%;
@@ -41,7 +44,7 @@ section.layout {
       background-size: $header-height $header-height, calc(100% - (#{$header-height + 40px})) auto;
 
       @media screen and (max-width: 360px) {
-        background: url('../../images/logo.png') no-repeat $header-padding (calc(50% - (#{($top-gradient-height + $bottom-gradient-height) / 2})));
+        background: url('../../images/logo.png') no-repeat $header-padding 50%;
         background-size: calc(100% - (#{$header-padding * 2})) auto;
       }
     }
@@ -66,8 +69,11 @@ section.layout {
     width: 100vw;
     display: flex;
     flex-wrap: wrap;
-    @media screen and (max-height: $media-break-point) {
+    @media screen and (max-height: 415px) {
       height: 100vh;
+    }
+    @media screen and (max-width: 360px) {
+      height: calc(100vh - 50px - #{$footer-height});
     }
   }
 

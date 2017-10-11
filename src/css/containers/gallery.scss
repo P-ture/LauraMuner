@@ -2,224 +2,236 @@
 @import '../mixin';
 
 > section.gallery {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 100%;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	height: 100%;
 
-  @media screen and (max-width: $media-break-point) {
-    flex-direction: column;
-  }
+	@media screen and (max-width: $media-break-point) {
+		flex-direction: column;
+	}
 
-  > div.left {
-    flex: 1 1 90%;
-    max-width: 90%;
-    display: flex;
-    flex-direction: column;
+	> div.left {
+		flex: 1 1 90%;
+		max-width: 90%;
+		display: flex;
+		height: 100%;
+		flex-direction: column;
 
-    @media screen and (max-width: $media-break-point) {
-      flex-direction: column;
-      flex: 1 1 100%;
-      width: 100%;
-      max-width: 100%;
-      max-height: calc(100% - 50px);
-      height: calc(100% - 50px);
-    }
+		@media screen and (max-width: $media-break-point) {
+			flex-direction: column;
+			flex: 1 1 100%;
+			width: 100%;
+			max-width: 100%;
+			max-height: calc(100% - 100px);
+			height: calc(100% - 100px);
+		}
 
-    > section.carousel {
-      height: calc(100% - 70px);
-      width: 100%;
-      background-color: rgba(255, 255, 255, .1);
-      @media screen and (max-height: $mobile-landscape-break) {
-        height: 100vh;
-      }
+		> section.carousel {
+			height: calc(100% - 80px);
+			width: 100%;
+			background-color: rgba(255, 255, 255, .1);
+			@media screen and (max-height: $mobile-landscape-break) {
+				height: 100vh;
+			}
 
-      > div.item > label {
-        $size: 20px;
+			> div.item > label {
+				$size: 20px;
 
-        position: absolute;
-        user-select: none;
-        width: $size;
-        height: $size;
-        top: 0;
-        bottom: 0;
-        margin: auto;
-        cursor: pointer;
+				position: absolute;
+				user-select: none;
+				width: $size;
+				height: $size;
+				top: 0;
+				bottom: 0;
+				margin: auto;
+				cursor: pointer;
 
-        &.previous {
-          @include triangle-left($size);
-          left: 10px;
-        }
+				&.previous {
+					@include triangle-left($size);
+					left: 10px;
+				}
 
-        &.next {
-          @include triangle-right($size);
-          right: 10px;
-        }
-      }
-    }
+				&.next {
+					@include triangle-right($size);
+					right: 10px;
+				}
+			}
+		}
 
-    > ul.description {
-      flex: 1 1 100px;
-      color: white;
-      font-size: 12px;
-      display: flex;
-      padding-left: 30px;
-      flex-direction: column;
-      justify-content: center;
-      list-style-type: none;
-      font-family: 'Roboto', Helvetica, sans-serif;
-      @media screen and (max-width: $media-break-point) {
-        padding-right: 30px;
-      }
-      > li:first-of-type {
-        font-weight: bold;
-      }
-    }
-  }
+		> ul.description {
+			flex: 1 1 100px;
+			color: white;
+			font-size: 12px;
+			display: flex;
+			padding-left: 30px;
+			flex-direction: column;
+			justify-content: center;
+			list-style-type: none;
+			font-family: 'Roboto', Helvetica, sans-serif;
+			@media screen and (max-width: $media-break-point) {
+				padding-right: 30px;
+			}
+			> li:first-of-type {
+				font-weight: bold;
+			}
+		}
+	}
 
-  > div.right {
-    flex: 1 1 10%;
-    max-width: 10%;
-    height: 100%;
-    user-select: none;
-    > p {
-      text-align: center;
-      color: white;
-      font-family: 'Roboto', Helvetica, sans-serif;
-      font-size: 13px;
-    }
+	> div.right {
+		flex: 1 1 10%;
+		max-width: 10%;
+		height: 100%;
+		user-select: none;
+		> p {
+			text-align: center;
+			color: white;
+			font-family: 'Roboto', Helvetica, sans-serif;
+			font-size: 13px;
+		}
 
-    @media screen and (max-width: $media-break-point) {
-      flex: auto;
-      max-width: 100%;
-      height: 100px;
-      padding-left: 0;
-    }
+		@media screen and (max-width: $media-break-point) {
+			flex: auto;
+			max-width: 100%;
+			height: 100px;
+			padding-left: 0;
+		}
 
-    > section.carousel {
-      width: 100%;
-      height: calc(100% - 15px);
-      display: flex;
-      flex-direction: column;
+		> section.carousel {
+			width: 100%;
+			height: calc(100% - 15px);
+			display: flex;
+			flex-direction: column;
 
-      > div.item {
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        position: relative;
+			> div.item {
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				position: relative;
 
-        $size: 20px;
+				$size: 15px;
 
-        > label {
-          height: $size;
-          width: $size;
-          display: block;
-          position: absolute;
-          cursor: pointer;
+				> label {
+					height: $size;
+					width: $size;
+					display: block;
+					position: absolute;
+					cursor: pointer;
 
-          &.previous {
-            @include triangle-up($size);
-            left: 0;
-            right: 0;
-            top: $size / 2;
-            margin: auto;
+					&.previous {
+						@include triangle-up($size);
+						left: 0;
+						right: 0;
+						top: $size / 2;
+						margin: auto;
 
-            @media screen and (max-width: $media-break-point) {
-              @include triangle-left($size);
-              left: 5px;
-              top: 0;
-              bottom: 0;
-              right: auto;
-            }
-          }
+						@media screen and (max-width: $media-break-point) {
+							@include triangle-left($size);
+							left: 5px;
+							top: 0;
+							bottom: 0;
+							right: auto;
+						}
+					}
 
-          &.next {
-            @include triangle-down($size);
-            left: 0;
-            right: 0;
-            bottom: $size / 2;
-            margin: auto;
+					&.next {
+						@include triangle-down($size);
+						left: 0;
+						right: 0;
+						bottom: $size / 2;
+						margin: auto;
 
-            @media screen and (max-width: $media-break-point) {
-              @include triangle-right($size);
-              right: 5px;
-              top: 0;
-              bottom: 0;
-              left: auto;
-            }
-          }
-        }
+						@media screen and (max-width: $media-break-point) {
+							@include triangle-right($size);
+							right: 5px;
+							top: 0;
+							bottom: 0;
+							left: auto;
+						}
+					}
+				}
 
-        > div.group {
-          height: 100%;
-          padding: ($size + ($size / 2)) 0;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
+			 > section {
+				 display: flex;
+				 align-items: center;
+				 justify-content: center;
+				 flex-direction: column;
+				 height: calc(100% - 15px);
+				 @media screen and (max-width: $media-break-point) {
+					height: 100%;
+				}
+				> div.group {
+					padding: ($size + ($size / 2)) 0;
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					height: 500px;
 
-          @media screen and (max-width: $media-break-point) {
-            flex-direction: row;
-            padding: 0 ($size * 4);
-          }
+					@media screen and (max-width: $media-break-point) {
+						flex-direction: row;
+						padding: 0 ($size * 4);
+					}
 
-          > a {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-decoration: none;
-            max-height: 33.3%;
-            overflow: hidden;
+					@media screen and (max-height: $mobile-landscape-break) {
+						padding: 0;
+						height: 80%;
+					}
 
-            @media screen and (max-width: $media-break-point) {
-              max-height: 100%;
-              margin: 0 ($size / 2);
-            }
+					> a {
+						width: 100%;
+						height: 100%;
+						display: flex;
+						flex-direction: column;
+						justify-content: center;
+						align-items: center;
+						text-decoration: none;
+						max-height: 33.3%;
+						overflow: hidden;
 
-            &.active {
-              > div {
-                border: 2px solid $theme-colour;
-                > label {
-                  color: $theme-colour;
-                }
-              }
-            }
+						@media screen and (max-width: $media-break-point) {
+							max-height: 100%;
+						}
 
-            > img {
-              width: 100%;
-              height: calc(100% - 50px);
-              object-fit: contain;
+						&.active {
+							> div {
+								border: 2px solid $theme-colour;
+								> label {
+									color: $theme-colour;
+								}
+							}
+						}
 
-              @media screen and (max-width: $media-break-point) {
-                height: 50%;
-                background-color: rgba(255, 255, 255, .1);
-              }
-            }
-              > div {
-                height: 50px;
-                width: 50px;
-                border: 1px solid white;
-                display: flex;
-                justify-content: center;
-                align-items: center;
+						> img {
+							width: 100%;
+							height: calc(100% - 50px);
+							object-fit: contain;
 
-                > label {
-                color: white;
-                text-transform: uppercase;
-                font-family: 'Roboto', Helvetica, sans-serif;
-                font-size: 11px;
-                transition: color .25s;
+							@media screen and (max-width: $media-break-point) {
+								height: 50%;
+								background-color: rgba(255, 255, 255, .1);
+							}
+						}
+							> div {
+								height: 35px;
+								width: 35px;
+								border: 1px solid white;
+								display: flex;
+								justify-content: center;
+								align-items: center;
+								margin: 10px;
 
-                @media screen and (max-width: $media-break-point) {
-                  height: 25%;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+								> label {
+								color: white;
+								text-transform: uppercase;
+								font-family: 'Roboto', Helvetica, sans-serif;
+								font-size: 11px;
+								transition: color .25s;
+							}
+						}
+					}
+				}
+				}
+			}
+		}
+	}
 }
