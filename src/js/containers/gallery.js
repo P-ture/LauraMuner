@@ -11,15 +11,16 @@ import Video                               from '../components/video';
  * @param {Object} props
  * @constructor
  */
-const Item = props => {
-
+const Item = withRouter( props => {
+   
     return (
         <section>
             <div className="group">
 
                 {props.model.map((model, index) => {
+                    console.log(props)
                     return (
-                        <NavLink to={`/${model.slug}`} key={hash(model)}>
+                        <NavLink className={index === 0 && props.match.path == '/' ? 'active' : ''} to={`/${model.slug}`} key={hash(model)}>
                             <div>
                                 <label>{model.label}</label>
                             </div>
@@ -32,7 +33,7 @@ const Item = props => {
         </section>
     );
 
-};
+});
 
 /**
  * @class Gallery

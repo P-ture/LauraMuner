@@ -46,7 +46,6 @@ const Layout = withRouter(connect(identity)(class Layout extends PureComponent {
     render() {
 
         const { media } = this.props;
-
         return (
             <section className="layout">
 
@@ -60,7 +59,9 @@ const Layout = withRouter(connect(identity)(class Layout extends PureComponent {
                 </main>
 
                 <footer>
-                    <p>&copy;Copyright Laura Muner Architect / Web site structure by <a href="www.assoonasseen.co.uk">AsSoonAsSeen</a> / Photographs by Michele Panzeri.</p><Contact /></footer>
+                    <p>&copy;Copyright Laura Muner Architect / Website by <a href="www.assoonasseen.co.uk">AsSoonAsSeen</a> / Photographs by Michele Panzeri.</p>
+                    <Contact />
+                </footer>
 
             </section>
         );

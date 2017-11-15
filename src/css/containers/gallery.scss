@@ -34,6 +34,9 @@
 			@media screen and (max-height: $mobile-landscape-break) {
 				height: 100vh;
 			}
+			@media screen and (max-width: 380px) {
+				height: calc(100% - 140px);
+			}
 
 			> div.item > label {
 				$size: 20px;
