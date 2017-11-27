@@ -16,9 +16,7 @@ const Item = withRouter( props => {
     return (
         <section>
             <div className="group">
-
                 {props.model.map((model, index) => {
-                    console.log(props)
                     return (
                         <NavLink className={index === 0 && props.match.path == '/' ? 'active' : ''} to={`/${model.slug}`} key={hash(model)}>
                             <div>
@@ -26,9 +24,7 @@ const Item = withRouter( props => {
                             </div>
                         </NavLink>
                     );
-
                 })}
-
             </div>
         </section>
     );
@@ -89,8 +85,6 @@ export default withRouter(class Gallery extends PureComponent {
 
         return (
             <section className="gallery">
-
-
 
                 <div className="left">
 
