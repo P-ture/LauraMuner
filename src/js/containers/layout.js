@@ -59,7 +59,7 @@ const Layout = withRouter(connect(identity)(class Layout extends PureComponent {
                 </main>
 
                 <footer>
-                    <p>&copy;Copyright Laura Muner Architect / Website by <a href="www.assoonasseen.co.uk">AsSoonAsSeen</a> / Photographs by Michele Panzeri.</p>
+                    <p>&copy;Copyright Laura Muner Architect / Website by <a href="http://www.assoonasseen.co.uk">AsSoonAsSeen</a> / Photographs by Michele Panzeri.</p>
                     <Contact />
                 </footer>
 
